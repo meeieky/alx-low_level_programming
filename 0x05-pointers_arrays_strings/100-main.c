@@ -9,7 +9,7 @@
 int main(void)
 {
 	int nb;
-
+	int _atoi(char *s);
 
 	nb = _atoi("98");
 	printf("%d\n", nb);
