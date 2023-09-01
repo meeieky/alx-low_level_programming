@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _memset - Fills a block of memory
  * @s: starting address of memory to be filled
