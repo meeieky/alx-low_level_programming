@@ -1,27 +1,30 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * read_textfile - Reads a text file and prints the POSIX standard output.
+ * read_textfile- Reads a text file and prints it to the POSIX standard output.
+ * @filename: file to be read
  * @letters: number of letters it should read and print
- * Return: actual number of letters it could read and print
- * @filename: if null retun is 0
+ * Return: -r actual number of bytes read and printed
+ * filename is NULL return 0
+ * write fails or does not write the expected amount of bytes, return 0
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	char *buf
-		ssize_t fd;
-	ssize_t w;
+	char *buf;
+	ssize_t fd;
+	ssize_t r;
 	ssize_t t;
 
-	FILE filename = popen(filename, "O_RDONLY");
+	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	buf = malloc(sizeof(char) * letters);
-	t = fread( buf, sizeof(char), letters, fd);
-	w = fwrite(stdout, sizeof(char), buf, ssize_t t);
+	t = read(fd, buf, letters);
+	r = write(STDOUT_FILENO, buf, t);
 
 	free(buf);
-	pclose(ssize_t fd);
-	return (w);
+	close(fd);
+	return (r);
 }
